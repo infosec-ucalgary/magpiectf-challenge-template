@@ -1,0 +1,37 @@
+name: "<CHALLENGE_NAME>"
+category: <CHALLENGE_CATEGORY>
+points: <CHALLENGE_POINTS>
+difficulty: <CHALLENGE_DIFFICULTY>
+
+description: |
+  <CHALLENGE_DESCRIPTION>
+  lorum ipsum dolor sit amet
+
+flag: "magpiectf{<CHALLENGE_FLAG>}"
+flag_format: "magpiectf{...}"
+
+connection:
+  type: <CHALLENGE_CONNECTION_TYPE>
+  host: <CHALLENGE_URI>
+  port: <CHALLENGE_PORT>
+
+hints:
+  - text: "<CHALLENGE_HINT>"
+    cost: <CHALLENGE_COST>
+  - text: "<CHALLENGE_HINT>"
+    cost: <CHALLENGE_COST>
+  # Add as many as you like
+
+author: "<AUTHOR_NAME>"
+
+# Add relevant tags for your challenge
+tags:
+  # - base64
+  # - beginner
+
+build:
+  dockerfile: dockerfile
+  compose: docker-compose.yml
+  dist_target: dist
+
+visible: true

@@ -1,7 +1,13 @@
 # 1. Build Stage
-FROM <BUILD_ENVIRONMENT> as builder
+FROM <BUILD_ENVIRONMENT> AS builder
 # Ex: FROM gcc:15 AS builder
 
+# Install any build dependencies your project needs
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends <DEPENDENCIES_HERE> \
+    && rm -rf /var/lib/apt/lists/*
+
+# DO NOT CHANGE
 WORKDIR /build
 COPY src/ .
 
@@ -15,10 +21,9 @@ FROM scratch AS dist
 
 # 3. Runtime environment
 FROM ubuntu:22.04
-RUN apt-get update -y && apt-get install -y <DEPENDENCIES>
-
-# Trim image of apt garbage
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends <DEPENDENCIES_HERE> \
+    && rm -rf /var/lib/apt/lists/*
 
 # Create underpriveleged user for challenge
 RUN useradd -M -s /usr/sbin/nologin challuser
