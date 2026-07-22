@@ -1,0 +1,6 @@
+services:
+  <CHALLENGE_NAME>:
+    build: .
+    ports:
+      - "1337:1337"
+    restart: unless-stopped
